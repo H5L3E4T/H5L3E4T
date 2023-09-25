@@ -1,7 +1,8 @@
 - 👋 Hi, I’m @H5L3E4T
 - 👀 I’m interested in all
 - 🌱 I’m currently learning beatmakin and hacking 
-- 💞️ I’m looking to collaborate on olivia 
+
+  
 - 📫 How to reach me CAY
 
 <!---
