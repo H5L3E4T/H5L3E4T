@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; background: #071326; }
+      #root {
+        position: relative; width: 100%; height: 100%; overflow: hidden;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #f4f8ff;
+        background: radial-gradient(ellipse at 20% 10%, #12408a 0%, #071326 62%);
+      }
+      .orb { position: absolute; border-radius: 50%; filter: blur(90px); }
+      #orb1 { width: 640px; height: 640px; left: -200px; top: 850px; background: #0a66c2; opacity: 0.45; }
+      #orb2 { width: 560px; height: 560px; right: -180px; top: -120px; background: #7c5cff; opacity: 0.30; }
+      .txt { position: absolute; left: 60px; width: 960px; text-align: center; font-weight: 800; letter-spacing: -0.03em; }
+      #h1 { top: 430px; font-size: 104px; line-height: 1.08; }
+      #h1 em { font-style: normal; color: #6cc3ff; }
+      #h2 { top: 800px; font-size: 54px; font-weight: 500; color: #b8d4f5; letter-spacing: -0.01em; }
+      #pt { top: 190px; font-size: 76px; line-height: 1.1; }
+      #pt em { font-style: normal; color: #6cc3ff; }
+      #rail { position: absolute; left: 112px; top: 520px; width: 8px; height: 640px; border-radius: 4px;
+              background: linear-gradient(180deg, #6cc3ff, #7c5cff); transform-origin: top center; }
+      .card {
+        position: absolute; left: 150px; width: 790px; height: 132px; border-radius: 28px;
+        background: rgba(255,255,255,0.09); border: 2px solid rgba(255,255,255,0.18);
+        display: flex; align-items: center; gap: 30px; padding: 0 40px;
+        font-size: 50px; font-weight: 700; letter-spacing: -0.02em;
+      }
+      .card .ic { font-size: 62px; width: 80px; text-align: center; }
+      .card small { display: block; font-size: 28px; font-weight: 500; color: #9fc0e8; letter-spacing: 0; margin-top: 4px; }
+      #c1 { top: 470px; } #c2 { top: 650px; } #c3 { top: 830px; } #c4 { top: 1010px; }
+      #c2 { border-color: #6cc3ff; background: rgba(108,195,255,0.16); }
+      #e1 { top: 450px; font-size: 100px; line-height: 1.1; }
+      #e2 { top: 790px; font-size: 64px; line-height: 1.15; color: #6cc3ff; }
+      #tag { position: absolute; left: 0; width: 100%; top: 1180px; text-align: center; font-size: 36px; color: #8fb2dc; font-weight: 500; }
+      .w { display: inline-block; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="14" data-width="1080" data-height="1350">
+      <div id="orb1" class="orb clip" data-layout-allow-overflow data-start="0" data-duration="14" data-track-index="0"></div>
+      <div id="orb2" class="orb clip" data-layout-allow-overflow data-start="0" data-duration="14" data-track-index="1"></div>
+
+      <!-- Scene 1: hook -->
+      <div id="h1" class="txt clip" data-start="0.2" data-duration="3.2" data-track-index="2">
+        <span class="w">Écrire</span> <span class="w">tes</span> <span class="w">posts</span><br /><span class="w"><em>LinkedIn</em></span> <span class="w">prend</span><br /><span class="w">trop de temps&nbsp;?</span>
+      </div>
+
+      <!-- Scene 2: pipeline -->
+      <div id="pt" class="txt clip" data-start="3.6" data-duration="5.6" data-track-index="3">Ton <em>pilote automatique</em><br />de contenu</div>
+      <div id="rail" class="clip" data-start="3.9" data-duration="5.3" data-track-index="4"></div>
+      <div id="c1" class="card clip" data-start="4.2" data-duration="5" data-track-index="5"><span class="ic">💡</span><div>Idée<small>Un sujet, une note vocale</small></div></div>
+      <div id="c2" class="card clip" data-start="4.9" data-duration="4.3" data-track-index="6"><span class="ic">🤖</span><div>Rédaction par l'IA<small>Ton ton, ta voix, ton style</small></div></div>
+      <div id="c3" class="card clip" data-start="5.6" data-duration="3.6" data-track-index="7"><span class="ic">👀</span><div>Ta validation<small>Tu relis et tu ajustes</small></div></div>
+      <div id="c4" class="card clip" data-start="6.3" data-duration="2.9" data-track-index="8"><span class="ic">🚀</span><div>Publication<small>Programmée au bon moment</small></div></div>
+
+      <!-- Scene 3: close -->
+      <div id="e1" class="txt clip" data-start="9.6" data-duration="4.4" data-track-index="9"><span class="w">Automatisé</span> <span class="w">par</span> <span class="w">l'IA.</span></div>
+      <div id="e2" class="txt clip" data-start="9.6" data-duration="4.4" data-track-index="10"><span class="w">Validé</span> <span class="w">par</span> <span class="w">toi.</span></div>
+      <div id="tag" class="clip" data-start="11.2" data-duration="2.8" data-track-index="11">Gagne du temps, reste authentique.</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#orb1", { x: 0, y: 0 }, { x: 260, y: -240, duration: 14, ease: "sine.inOut" }, 0);
+      tl.fromTo("#orb2", { x: 0, y: 0 }, { x: -240, y: 260, duration: 14, ease: "sine.inOut" }, 0);
+
+      // Scene 1
+      tl.fromTo("#h1 .w", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.12 }, 0.2);
+      tl.to("#h1", { opacity: 0, y: -50, duration: 0.45, ease: "power2.in" }, 2.95);
+
+      // Scene 2
+      tl.fromTo("#pt", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.6);
+      tl.fromTo("#rail", { scaleY: 0 }, { scaleY: 1, duration: 2.6, ease: "power1.inOut" }, 3.9);
+      ["#c1", "#c2", "#c3", "#c4"].forEach((id, i) => {
+        tl.fromTo(id, { opacity: 0, x: 90, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 4.2 + i * 0.7);
+      });
+      tl.to(["#pt", "#rail", "#c1", "#c2", "#c3", "#c4"], { opacity: 0, y: -40, duration: 0.45, ease: "power2.in" }, 8.7);
+
+      // Scene 3
+      tl.fromTo("#e1 .w", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.12 }, 9.6);
+      tl.fromTo("#e2 .w", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.12 }, 10.4);
+      tl.fromTo("#tag", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 11.2);
+      tl.to(["#e1", "#e2", "#tag"], { opacity: 0, duration: 0.5, ease: "power2.in" }, 13.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
